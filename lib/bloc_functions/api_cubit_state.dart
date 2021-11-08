@@ -39,3 +39,22 @@ class StoreListData extends ApiRequest {
     this.postDataList = data;
   }
 }
+
+class StoreDetailsList extends ApiRequest {
+  late String title;
+  late String image;
+  late String description;
+  StoreDetailsList(String title, String image, String description) {
+    this.title = title;
+    this.image = image;
+    this.description = description;
+  }
+}
+
+class StoreFavList extends ApiRequest {
+  late List favList;
+
+  StoreFavList(List data) {
+    this.favList = data;
+  }
+}

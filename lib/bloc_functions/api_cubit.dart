@@ -1,4 +1,6 @@
 import 'package:final_project_md/bloc_functions/api_cubit_state.dart';
+import 'package:final_project_md/detailsPost.dart';
+import 'package:final_project_md/favourite_list.dart';
 import 'package:final_project_md/posts_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -32,6 +34,14 @@ class GetApiData extends Cubit<ApiRequest> {
   void passData(List<PostsData> postData) {
     print('STORE LIST DATA TRIGGER');
     emit(StoreListData(postData));
+  }
+
+  void passDetailsList(String title, String image, String description) {
+    emit(StoreDetailsList(title, image, description));
+  }
+
+  void passFavList(List<favouriteList> data) {
+    emit(StoreFavList(data));
   }
 
   void delPost(String id) {

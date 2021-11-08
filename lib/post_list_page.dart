@@ -1,5 +1,6 @@
 import 'package:final_project_md/detailsPost.dart';
 import 'package:final_project_md/favourite_list.dart';
+import 'package:final_project_md/readMore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
@@ -36,6 +37,9 @@ class _PostCardListState extends State<PostCardList> {
   final failedSnackBar = SnackBar(
     content: const Text('Sorry! You are not the owner of this post!'),
   );
+  late String title;
+  late String image;
+  late String des;
 
   void showSuccessfulSnackBar() {
     ScaffoldMessenger.of(context).showSnackBar(successfulsnackBar);
@@ -338,20 +342,43 @@ class _PostCardListState extends State<PostCardList> {
                                                     if (state.postDataList[
                                                             index] !=
                                                         null) {
-                                                      details.add(detailsPage(
-                                                        image: state
-                                                            .postDataList[index]
-                                                            .image,
-                                                        title: state
-                                                            .postDataList[index]
-                                                            .title,
-                                                        description: state
-                                                            .postDataList[index]
-                                                            .description,
-                                                      ));
+                                                      title = state
+                                                          .postDataList[index]
+                                                          .title;
+                                                      image = state
+                                                          .postDataList[index]
+                                                          .image;
+                                                      des = state
+                                                          .postDataList[index]
+                                                          .description;
+                                                      // details.add(detailsPage(
+                                                      //   image: state
+                                                      //       .postDataList[index]
+                                                      //       .image,
+                                                      //   title: state
+                                                      //       .postDataList[index]
+                                                      //       .title,
+                                                      //   description: state
+                                                      //       .postDataList[index]
+                                                      //       .description,
+
+                                                      userInputBloc
+                                                          .passDetailsList(
+                                                              title,
+                                                              image,
+                                                              des);
                                                     }
                                                     // print(details);
                                                   });
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            (ReadMoreList(
+                                                              besquare_API: widget
+                                                                  .besquare_API,
+                                                            ))),
+                                                  );
                                                 },
                                                 icon: const Icon(IconData(58634,
                                                     fontFamily:
