@@ -46,14 +46,38 @@ class _ReadMoreListState extends State<ReadMoreList> {
                         child: Column(
                           children: [
                             Text(
-                              state.title,
+                              "Title:",
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                              // overflow: TextOverflow.ellipsis,
-                              // maxLines: 1
+                                  fontSize: 25, fontWeight: FontWeight.bold),
                             ),
+                            Container(
+                              width: 300,
+                              padding: EdgeInsets.only(
+                                  left: 5, right: 5, top: 20, bottom: 20),
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.redAccent,
+                                    blurRadius: 4,
+                                    offset: Offset(4, 8), // Shadow position
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                state.title,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.center,
+                                // overflow: TextOverflow.ellipsis,
+                                // maxLines: 1
+                              ),
+                            ),
+                            SizedBox(height: 13),
                             Image.network(
                               ('${state.image}'),
                               errorBuilder: (BuildContext context,
@@ -62,11 +86,29 @@ class _ReadMoreListState extends State<ReadMoreList> {
                                     image: AssetImage('assets/empty.png'));
                               },
                             ),
-                            Text(
-                              state.description,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
+                            SizedBox(height: 10),
+                            Container(
+                              width: 500,
+                              padding: EdgeInsets.only(
+                                  left: 5, right: 5, top: 20, bottom: 20),
+                              decoration: BoxDecoration(
+                                color: Colors.yellow[600],
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black,
+                                    blurRadius: 4,
+                                    offset: Offset(4, 8), // Shadow position
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                state.description,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
                             )
                           ],

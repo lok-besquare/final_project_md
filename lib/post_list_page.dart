@@ -204,7 +204,7 @@ class _PostCardListState extends State<PostCardList> {
                                                       StackTrace? stackTrace) {
                                                     return Image(
                                                         image: AssetImage(
-                                                            'assets/empty.png'));
+                                                            'assets/errorimg.png'));
                                                   },
                                                 ),
                                               )
