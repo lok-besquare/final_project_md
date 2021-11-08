@@ -103,8 +103,7 @@ class _UserInputPageState extends State<UserInputPage> {
               data["author"],
             ));
           });
-          print('HERE');
-          print(storePostData);
+
           storePostData = storeTempPostData;
         });
         // BlocProvider.of<GetApiData>(context).passData(storePostData);
@@ -253,7 +252,6 @@ class _UserInputPageState extends State<UserInputPage> {
           },
           listener: (context, state) {
             if (state is SignInRequest && _checkController == true) {
-              print("LISTENER ACTIVATED");
               // scaffoldMessengerKey.currentState!.showSnackBar(SnackBar(
               //     content: const Text(
               //         'Congratz! You have successfully connected to the server.')));
@@ -262,68 +260,4 @@ class _UserInputPageState extends State<UserInputPage> {
           },
         ));
   }
-
-  // ignore: non_constant_identifier_names
-  // Widget PostCardList() {
-  //   _getPostResponse();
-  //   userInputBloc = BlocProvider.of<GetApiData>(context);
-  //   return Scaffold(
-  //       appBar: AppBar(centerTitle: true, title: const Text('Posts')),
-  //       body: Padding(
-  //         padding: const EdgeInsets.only(top: 30),
-  //         child: SizedBox(
-  //           width: MediaQuery.of(context).size.width,
-  //           height: MediaQuery.of(context).size.height,
-  //           child: Expanded(
-  //             child: Row(
-  //               children: [
-  //                 BlocConsumer<GetApiData, CheckDataValidity>(
-  //                   bloc: context.read<GetApiData>(),
-  //                   builder: (context, state) {
-  //                     return Expanded(
-  //                       child: Row(
-  //                         children: [
-  //                           storePostData.isNotEmpty
-  //                               ? Expanded(
-  //                                   child: ListView.builder(
-  //                                     itemCount: storePostData.length,
-  //                                     itemBuilder: (context, index) {
-  //                                       return Card(
-  //                                         child: Padding(
-  //                                           padding: const EdgeInsets.only(
-  //                                               top: 10, bottom: 10, right: 10),
-  //                                           child: Row(
-  //                                             children: <Widget>[
-  //                                               // Text(storePostData[index].description)
-  //                                               Column(
-  //                                                 mainAxisAlignment:
-  //                                                     MainAxisAlignment
-  //                                                         .spaceAround,
-  //                                                 crossAxisAlignment:
-  //                                                     CrossAxisAlignment.start,
-  //                                                 children: [
-  //                                                   Text(storePostData[index]
-  //                                                       .description),
-  //                                                 ],
-  //                                               ),
-  //                                             ],
-  //                                           ),
-  //                                         ),
-  //                                       );
-  //                                     },
-  //                                   ),
-  //                                 )
-  //                               : Container()
-  //                         ],
-  //                       ),
-  //                     );
-  //                   },
-  //                   listener: (context, state) {},
-  //                 )
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       ));
-
 }

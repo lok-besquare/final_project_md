@@ -1,4 +1,5 @@
 import 'package:final_project_md/about_page.dart';
+import 'package:final_project_md/favListPage.dart';
 import 'package:final_project_md/favourite_list.dart';
 import 'package:final_project_md/readMore.dart';
 import 'package:flutter/material.dart';
@@ -120,7 +121,16 @@ class _PostCardListState extends State<PostCardList> {
                           alignment: Alignment.topRight,
                         ),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => FavPage(
+                            //             besquare_API: widget.besquare_API,
+                            //             username: widget.username,
+                            //           )),
+                            // );
+                          },
                           icon: const Icon(
                             Icons.favorite,
                             color: Colors.red,
@@ -279,11 +289,6 @@ class _PostCardListState extends State<PostCardList> {
                                                       left: 5,
                                                       bottom: 10,
                                                     ),
-                                                    // padding:
-                                                    //     EdgeInsets.only(
-                                                    //         right: 1),
-                                                    // height: 70,
-                                                    // width: 250,
                                                     child: Text(
                                                       state.postDataList[index]
                                                           .description,
@@ -313,19 +318,14 @@ class _PostCardListState extends State<PostCardList> {
                                                               FontWeight.bold,
                                                           fontSize: 17,
                                                         ),
-                                                        // state
-                                                        //     .postDataList[
-                                                        //         index]
-                                                        //     .date,
+
                                                         maxLines: 1,
                                                       )),
                                                 ],
                                               ),
                                             ),
                                           ),
-                                          // Column(
-                                          //   children: [Container()],
-                                          // )Column(
+
                                           Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -347,16 +347,6 @@ class _PostCardListState extends State<PostCardList> {
                                                       des = state
                                                           .postDataList[index]
                                                           .description;
-                                                      // details.add(detailsPage(
-                                                      //   image: state
-                                                      //       .postDataList[index]
-                                                      //       .image,
-                                                      //   title: state
-                                                      //       .postDataList[index]
-                                                      //       .title,
-                                                      //   description: state
-                                                      //       .postDataList[index]
-                                                      //       .description,
 
                                                       userInputBloc
                                                           .passDetailsList(
@@ -381,47 +371,14 @@ class _PostCardListState extends State<PostCardList> {
                                                         'MaterialIcons')),
                                               ),
                                               IconButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    if (state.postDataList[
-                                                            index] !=
-                                                        null) {
-                                                      favList.add(favouriteList(
-                                                        image: state
-                                                            .postDataList[index]
-                                                            .image,
-                                                        title: state
-                                                            .postDataList[index]
-                                                            .title,
-                                                        description: state
-                                                            .postDataList[index]
-                                                            .description,
-                                                        date: state
-                                                            .postDataList[index]
-                                                            .date,
-                                                      ));
-                                                    }
-                                                  });
-                                                },
+                                                onPressed: () {},
                                                 icon: const Icon(
-                                                  // isFavSaved
-                                                  //     ? Icons.favorite
-                                                  //     : Icons
-                                                  //         .favorite_border,
                                                   Icons.favorite,
                                                   color: Colors.red,
-                                                  //  isFavSaved
-                                                  //     ? Colors.red
-                                                  //     : null,
                                                 ),
                                               ),
                                               IconButton(
                                                 onPressed: () {
-                                                  // if (widget.username ==
-                                                  //     state
-                                                  //         .postDataList[
-                                                  //             index]
-                                                  //         .author) {
                                                   if (widget.username ==
                                                       state.postDataList[index]
                                                           .author) {
@@ -433,21 +390,6 @@ class _PostCardListState extends State<PostCardList> {
                                                   } else {
                                                     showFailedSnackBar();
                                                   }
-                                                  // initState();
-                                                  // SnackBar(
-                                                  //   behavior:
-                                                  //       SnackBarBehavior
-                                                  //           .floating,
-                                                  //   content: Text(
-                                                  //       'Text label'),
-                                                  //   action:
-                                                  //       SnackBarAction(
-                                                  //     label: 'Action',
-                                                  //     onPressed:
-                                                  //         () {},
-                                                  //   ),
-                                                  // );
-                                                  // }
                                                 },
                                                 icon: const Icon(IconData(
                                                     0xe1b9,
@@ -478,267 +420,4 @@ class _PostCardListState extends State<PostCardList> {
       ),
     );
   }
-  // Widget build(BuildContext context) {
-  //   // _getPostResponse();
-  //   userInputBloc = BlocProvider.of<GetApiData>(context);
-  //   return Scaffold(
-  //       appBar: AppBar(centerTitle: true, title: const Text('Posts')),
-  //       body: Padding(
-  //         padding: const EdgeInsets.only(top: 30),
-  //         child: SizedBox(
-  //           width: MediaQuery.of(context).size.width,
-  //           height: MediaQuery.of(context).size.height,
-  //           child: Row(
-  //             children: [
-  //               BlocConsumer<GetApiData, ApiRequest>(
-  //                 bloc: context.read<GetApiData>(),
-  //                 builder: (context, state) {
-  //                   return Expanded(
-  //                     child: Row(
-  //                       children: [
-  //                         state is StoreListData
-  //                             ? state.postDataList.isNotEmpty
-  //                                 ? Expanded(
-  //                                     child: ListView.builder(
-  //                                       itemCount: widget.storePostData.length,
-  //                                       itemBuilder: (context, index) {
-  //                                         return Card(
-  //                                           child: Padding(
-  //                                             padding: const EdgeInsets.only(
-  //                                                 top: 10,
-  //                                                 bottom: 10,
-  //                                                 right: 10),
-  //                                             child: Row(
-  //                                               children: <Widget>[
-  //                                                 // Text(storePostData[index].description)
-  //                                                 Column(
-  //                                                   mainAxisAlignment:
-  //                                                       MainAxisAlignment
-  //                                                           .spaceAround,
-  //                                                   crossAxisAlignment:
-  //                                                       CrossAxisAlignment
-  //                                                           .start,
-  //                                                   children: [
-  //                                                     Text(widget
-  //                                                         .storePostData[index]
-  //                                                         .description),
-  //                                                   ],
-  //                                                 ),
-  //                                               ],
-  //                                             ),
-  //                                           ),
-  //                                         );
-  //                                       },
-  //                                     ),
-  //                                   )
-  //                                 : Container()
-  //                             : SizedBox.shrink(),
-  //                       ],
-  //                     ),
-  //                   );
-  //                 },
-  //                 listener: (context, state) {},
-  //               )
-  //             ],
-  //           ),
-  //         ),
-  //       ));
-  // }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:web_socket_channel/src/channel.dart';
-// import 'bloc_functions/api_cubit_state.dart';
-// import 'package:final_project_md/bloc_functions/api_cubit.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'main.dart';
-// import 'posts_data.dart';
-
-// // ignore: must_be_immutable
-// class PostCardList extends StatefulWidget {
-//   PostCardList(
-//       {required this.besquare_API, required this.storePostData, Key? key})
-//       : super(key: key);
-//   WebSocketChannel besquare_API;
-//   List<PostsData> storePostData;
-//   @override
-//   _PostCardListState createState() => _PostCardListState();
-// }
-
-// class _PostCardListState extends State<PostCardList> {
-//   // void dosmtg(){
-//   //   globals
-//   //
-//   late var userInputBloc;
-//   late GetApiData getApiDataCubit;
-
-//   void _getPostResponse() {
-//     widget.besquare_API.sink.add('{"type": "get_posts"}');
-//   }
-
-//   @override
-//   void initState() {
-//     getApiDataCubit = BlocProvider.of<GetApiData>(context);
-//     _getPostResponse();
-//     super.initState();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     // _getPostResponse();
-//     userInputBloc = BlocProvider.of<GetApiData>(context);
-//     return Scaffold(
-//         appBar: AppBar(centerTitle: true, title: const Text('Posts')),
-//         body: Padding(
-//           padding: const EdgeInsets.only(top: 30),
-//           child: Column(
-//             children: [
-//               Row(
-//                 children: [
-//                   ElevatedButton.icon(
-//                     onPressed: () {
-//                       print("click");
-//                     },
-//                     icon: Icon(
-//                       Icons.favorite,
-//                       color: Colors.pink,
-//                       size: 24.0,
-//                     ),
-//                     label: Text('Elevated Button'),
-//                     style: ElevatedButton.styleFrom(
-//                       shape: new RoundedRectangleBorder(
-//                         borderRadius: new BorderRadius.circular(20.0),
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//               SizedBox(
-//                 width: MediaQuery.of(context).size.width,
-//                 height: MediaQuery.of(context).size.height,
-//                 child: Row(
-//                   children: [
-//                     BlocConsumer<GetApiData, ApiRequest>(
-//                       bloc: context.read<GetApiData>(),
-//                       builder: (context, state) {
-//                         return state is StoreListData
-//                             ? state.postDataList.isNotEmpty
-//                                 ? Expanded(
-//                                     child: ListView.builder(
-//                                       itemCount: widget.storePostData.length,
-//                                       itemBuilder: (context, index) {
-//                                         return Card(
-//                                           color: Colors.amber[200],
-//                                           child: Padding(
-//                                             padding: const EdgeInsets.only(
-//                                                 top: 200,
-//                                                 bottom: 200,
-//                                                 right: 200),
-//                                             child: Row(
-//                                               children: <Widget>[
-//                                                 // Text(storePostData[index].description)
-//                                                 Column(
-//                                                   mainAxisAlignment:
-//                                                       MainAxisAlignment
-//                                                           .spaceAround,
-//                                                   crossAxisAlignment:
-//                                                       CrossAxisAlignment.start,
-//                                                   children: [
-//                                                     Container(
-//                                                       width: 200,
-//                                                       height: 200,
-//                                                       child: Image.network(
-//                                                         '${widget.storePostData[index].image}',
-//                                                       ),
-//                                                     )
-//                                                   ],
-//                                                 ),
-//                                                 Column(
-//                                                   children: [],
-//                                                 )
-//                                               ],
-//                                             ),
-//                                           ),
-//                                         );
-//                                       },
-//                                     ),
-//                                   )
-//                                 : Container()
-//                             : SizedBox.shrink();
-//                       },
-//                       listener: (context, state) {},
-//                     )
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ));
-//   }
-//   // Widget build(BuildContext context) {
-//   //   // _getPostResponse();
-//   //   userInputBloc = BlocProvider.of<GetApiData>(context);
-//   //   return Scaffold(
-//   //       appBar: AppBar(centerTitle: true, title: const Text('Posts')),
-//   //       body: Padding(
-//   //         padding: const EdgeInsets.only(top: 30),
-//   //         child: SizedBox(
-//   //           width: MediaQuery.of(context).size.width,
-//   //           height: MediaQuery.of(context).size.height,
-//   //           child: Row(
-//   //             children: [
-//   //               BlocConsumer<GetApiData, ApiRequest>(
-//   //                 bloc: context.read<GetApiData>(),
-//   //                 builder: (context, state) {
-//   //                   return Expanded(
-//   //                     child: Row(
-//   //                       children: [
-//   //                         state is StoreListData
-//   //                             ? state.postDataList.isNotEmpty
-//   //                                 ? Expanded(
-//   //                                     child: ListView.builder(
-//   //                                       itemCount: widget.storePostData.length,
-//   //                                       itemBuilder: (context, index) {
-//   //                                         return Card(
-//   //                                           child: Padding(
-//   //                                             padding: const EdgeInsets.only(
-//   //                                                 top: 10,
-//   //                                                 bottom: 10,
-//   //                                                 right: 10),
-//   //                                             child: Row(
-//   //                                               children: <Widget>[
-//   //                                                 // Text(storePostData[index].description)
-//   //                                                 Column(
-//   //                                                   mainAxisAlignment:
-//   //                                                       MainAxisAlignment
-//   //                                                           .spaceAround,
-//   //                                                   crossAxisAlignment:
-//   //                                                       CrossAxisAlignment
-//   //                                                           .start,
-//   //                                                   children: [
-//   //                                                     Text(widget
-//   //                                                         .storePostData[index]
-//   //                                                         .description),
-//   //                                                   ],
-//   //                                                 ),
-//   //                                               ],
-//   //                                             ),
-//   //                                           ),
-//   //                                         );
-//   //                                       },
-//   //                                     ),
-//   //                                   )
-//   //                                 : Container()
-//   //                             : SizedBox.shrink(),
-//   //                       ],
-//   //                     ),
-//   //                   );
-//   //                 },
-//   //                 listener: (context, state) {},
-//   //               )
-//   //             ],
-//   //           ),
-//   //         ),
-//   //       ));
-//   // }
-// }

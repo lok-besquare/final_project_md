@@ -34,10 +34,7 @@ class _ReadMoreListState extends State<ReadMoreList> {
                 icon: Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () => Navigator.of(context).pop(_refresh()))),
         body: Center(
-          child: BlocConsumer<GetApiData, ApiRequest>(
-            listener: (context, state) {
-              // TODO: implement listener
-            },
+          child: BlocBuilder<GetApiData, ApiRequest>(
             builder: (context, state) {
               return state is StoreDetailsList
                   ? Center(

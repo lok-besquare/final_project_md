@@ -4,10 +4,10 @@ class favouriteList {
   String description;
   String date;
 
-  favouriteList({
+  favouriteList([
     this.image = "",
     this.title = "",
     this.description = "",
     this.date = "",
-  });
+  ]) {}
 }
