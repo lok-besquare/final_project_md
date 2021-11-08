@@ -1,5 +1,4 @@
 import 'package:final_project_md/bloc_functions/api_cubit_state.dart';
-import 'package:final_project_md/detailsPost.dart';
 import 'package:final_project_md/favourite_list.dart';
 import 'package:final_project_md/posts_data.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

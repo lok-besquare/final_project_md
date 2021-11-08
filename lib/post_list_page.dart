@@ -1,4 +1,4 @@
-import 'package:final_project_md/detailsPost.dart';
+import 'package:final_project_md/about_page.dart';
 import 'package:final_project_md/favourite_list.dart';
 import 'package:final_project_md/readMore.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +30,6 @@ class _PostCardListState extends State<PostCardList> {
   late GetApiData getApiDataCubit;
 
   List<favouriteList> favList = [];
-  List<detailsPage> details = [];
   final successfulsnackBar = SnackBar(
     content: const Text('Yay! You have deleted your own post!'),
   );
@@ -95,11 +94,10 @@ class _PostCardListState extends State<PostCardList> {
                     color: Colors.grey,
                   ),
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const about_page()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => about_page()),
+                    );
                   },
                 ),
                 Expanded(
@@ -167,8 +165,6 @@ class _PostCardListState extends State<PostCardList> {
                                   String idIndex = state.postDataList[index].id;
 
                                   bool isFavSaved = favList.contains(idIndex);
-
-                                  bool isDetSaved = details.contains(idIndex);
 
                                   DateTime tempdate = DateTime.parse(
                                       state.postDataList[index].date);
