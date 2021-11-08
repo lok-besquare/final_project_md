@@ -45,23 +45,32 @@ class _PostCardListState extends State<PostCardList> {
     ScaffoldMessenger.of(context).showSnackBar(failedSnackBar);
   }
 
-  void _getPostResponse() {
+  void _getFilteredWithDatePostResponse() {
     widget.besquare_API.sink
         .add('{"type": "get_posts", "data": {"sortBy": "date"}}');
+  }
+
+  void _getPost() {
+    widget.besquare_API.sink.add('{"type": "get_posts"}');
   }
 
   @override
   void initState() {
     // getApiDataCubit = BlocProvider.of<GetApiData>(context);
     _refresh();
-    _getPostResponse();
+    _getPost();
     super.initState();
   }
 
+  Future<void> _filteredwithdate() {
+    _getFilteredWithDatePostResponse();
+    return Future.delayed(Duration(seconds: 1));
+  }
+
   Future<void> _refresh() {
-    _getPostResponse();
+    _getPost();
     return Future.delayed(
-      Duration(seconds: 2),
+      Duration(seconds: 1),
     );
   }
 
@@ -94,7 +103,9 @@ class _PostCardListState extends State<PostCardList> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _filteredwithdate();
+                          },
                           icon: const Icon(Icons.sort),
                           alignment: Alignment.topRight,
                         ),
